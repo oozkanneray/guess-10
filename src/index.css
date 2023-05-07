@@ -7,3 +7,7 @@
     height:100vh;
     background-color: #121213;
 }
+
+textarea:focus, input:focus{
+    outline: none;
+}

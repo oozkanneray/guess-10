@@ -1,7 +1,7 @@
 const data = [
     {
-        question: "Dünyanın en çok nüfüusa sahip ilk 10 ülkesi",
-        answers:["Çin","Hindistan","Rusya","Endonezya","Brezilya","Bangladeş","Meksika","Pakistan","Nijerya","Amerika"]
+        question: "Dünyanın en çok nüfusa sahip ilk 10 ülkesi?",
+        answers:["Çin","Hindistan","Amerika","Endonezya","Pakistan","Brezilya","Nijerya","Bangladeş","Rusya","Meksika"]
     }
 ]
 

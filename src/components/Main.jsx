@@ -10,9 +10,10 @@ function Main({ question, answers }) {
     "border-2 rounded-xl p-3 border-gray-300 m-2 bg-transparent text-gray-300 placeholder-gray-400 animate-wrong-answer animate-jiggle-jiggle";
 
   const [userInput, setUserInput] = useState("");
-  const [timer, setTimer] = useState(60);
+  const [timer, setTimer] = useState(10);
   const [playTimer, setPlayTimer] = useState(true);
   const [inputClass, setInputClass] = useState(initialClass);
+  const [score,setScore] = useState(0)
   const [a, setA] = useState("");
   const inputRef = useRef(null);
 
@@ -52,7 +53,7 @@ function Main({ question, answers }) {
 
       <div className="flex flex-wrap w-[25%] justify-center">
         {answers.map((item) => (
-          <AnswerBox answer={item} userInput={userInput} />
+          <AnswerBox answer={item} userInput={userInput} setScore={setScore} timer={timer} score={score} />
         ))}
       </div>
 
@@ -78,8 +79,8 @@ function Main({ question, answers }) {
         </button>
       </form>
       <div className="text-gray-300">{timer}</div>
-      <div className="text-gray-300 text-center">
-        {checkTimer() && answers.map((item) => <Results results={item} />)}
+      <div className="text-gray-300 text-center w-[35%]">
+        {/* {checkTimer() && <Results results={answers} score={score} />} */}
       </div>
     </main>
   );

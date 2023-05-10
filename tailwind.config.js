@@ -3,12 +3,14 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      colors:{
-        "currentBgColor": "#121213" 
+      colors: {
+        "currentBgColor": "#121213",
+        "lightCurrentBgColor": "#262627",
+        "questionTextColor" : "#60f086" ,
       },
       keyframes: {
         found: {
-          "0%": { color: "green" },
+          "100%": { color: "#60f086" },
         },
         wrong: {
           "0%": { transform: "translate(10px)", border: "2px solid red" },
@@ -26,10 +28,10 @@ export default {
         },
       },
       animation: {
-        "already-found": "found 0.3s linear",
+        "already-found": "found 0.3s linear forwards",
         "wrong-answer": "wrong 0.2s linear",
-        closing: "closeTab 0.2s linear forwards",
-        opening: "openTab 0.2s linear forwards",
+        "closing": "closeTab 0.2s linear forwards",
+        "opening": "openTab 0.2s linear forwards",
       },
     },
   },

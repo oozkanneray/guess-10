@@ -5,16 +5,17 @@ import Results from "./Results";
 
 function Main({ question, answers }) {
   let initialClass =
-    "border-2 rounded-xl p-3 border-gray-300 m-2 bg-transparent text-gray-300 placeholder-gray-400";
+    "border-2 rounded-xl p-3 border-gray-500 m-2 bg-transparent text-white placeholder-gray-400";
   let animClass =
-    "border-2 rounded-xl p-3 border-gray-300 m-2 bg-transparent text-gray-300 placeholder-gray-400 animate-wrong-answer animate-jiggle-jiggle";
+    "border-2 rounded-xl p-3 border-gray-500 m-2 bg-transparent text-white placeholder-gray-400 animate-wrong-answer animate-jiggle-jiggle";
 
   const [userInput, setUserInput] = useState("");
-  const [timer, setTimer] = useState(10);
+  const [timer, setTimer] = useState(0);
   const [playTimer, setPlayTimer] = useState(true);
   const [inputClass, setInputClass] = useState(initialClass);
-  const [score,setScore] = useState(0)
+  const [score, setScore] = useState(0);
   const [a, setA] = useState("");
+  const [resultTab,setResultTab] = useState(false);
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -49,11 +50,17 @@ function Main({ question, answers }) {
 
   return (
     <main className="flex flex-col items-center m-12">
-      <div className="text-gray-300 font-bold text-4xl mb-8">-{question}-</div>
+      <div className="text-questionTextColor font-bold text-4xl mb-8">-{question}-</div>
 
-      <div className="flex flex-wrap w-[25%] justify-center">
+      <div className="flex flex-wrap w-[30%] justify-center">
         {answers.map((item) => (
-          <AnswerBox answer={item} userInput={userInput} setScore={setScore} timer={timer} score={score} />
+          <AnswerBox
+            answer={item}
+            userInput={userInput}
+            setScore={setScore}
+            timer={timer}
+            score={score}
+          />
         ))}
       </div>
 
@@ -74,13 +81,22 @@ function Main({ question, answers }) {
           }}
           ref={inputRef}
         />
-        <button className="border-2 rounded-xl p-3 border-gray-300 m-2 text-gray-300">
+        <button className="border-2 rounded-xl p-3 border-gray-500 m-2 text-white">
           Ok
         </button>
       </form>
       <div className="text-gray-300">{timer}</div>
       <div className="text-gray-300 text-center w-[35%]">
-        {/* {checkTimer() && <Results results={answers} score={score} />} */}
+        {checkTimer() && (
+          <button
+            onClick={() => {
+              setResultTab(true);
+            }}
+          >
+            Show Results
+          </button>
+        )}
+        {resultTab && <Results results={answers} score={score} setResultTab={setResultTab} resultTab={resultTab} />}
       </div>
     </main>
   );

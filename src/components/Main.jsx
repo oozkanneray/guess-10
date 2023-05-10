@@ -10,7 +10,7 @@ function Main({ question, answers }) {
     "border-2 rounded-xl p-3 border-gray-500 m-2 bg-transparent text-white placeholder-gray-400 animate-wrong-answer animate-jiggle-jiggle";
 
   const [userInput, setUserInput] = useState("");
-  const [timer, setTimer] = useState(0);
+  const [timer, setTimer] = useState(10);
   const [playTimer, setPlayTimer] = useState(true);
   const [inputClass, setInputClass] = useState(initialClass);
   const [score, setScore] = useState(0);
@@ -44,7 +44,7 @@ function Main({ question, answers }) {
   };
 
   const checkWrong = () => {
-    !answers.some((item) => item.toLowerCase() === a.toLowerCase()) &&
+    !answers.some((item) => item.answer.toLowerCase() === a.toLowerCase()) &&
       setInputClass(animClass);
   };
 
@@ -55,7 +55,7 @@ function Main({ question, answers }) {
       <div className="flex flex-wrap w-[30%] justify-center">
         {answers.map((item) => (
           <AnswerBox
-            answer={item}
+            answer={item.answer}
             userInput={userInput}
             setScore={setScore}
             timer={timer}

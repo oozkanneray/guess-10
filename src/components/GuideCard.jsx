@@ -6,9 +6,9 @@ function GuideCard({ open, setOpen }) {
 
   return (
     <div className={open ? openClass : closeAnimClas}>
-      <div className="bg-lightCurrentBgColor rounded-2xl text-gray-300 p-14" on>
+      <div className="w-[25%] h-[55%] bg-lightCurrentBgColor rounded-2xl text-gray-300 p-14 flex flex-col justify-center">
         <div className="flex justify-around">
-          <h4 className="text-4xl mb-4 text-cyan-400">Guess10</h4>
+          <h4 className="text-4xl mb-4 text-questionTextColor">Guess10</h4>
           <button
             className="text-xl"
             onClick={() => {
@@ -20,11 +20,11 @@ function GuideCard({ open, setOpen }) {
         </div>
         <div className="flex flex-col text-lg py-5">
           <p className="mb-4">
-            Size verilen soruyu {<span className="text-cyan-400">60 saniye</span>} içerisinde ne kadar cevaplarsanız o
+            Size verilen soruyu {<span className="text-questionTextColor">60 saniye</span>} içerisinde ne kadar cevaplarsanız o
             kadar puan alırsınız.
           </p>
           <p className="mb-4">
-            Kalan sürenizin kaç olduğuna bağlı olarak puan kazanırsınız. {<span className="text-cyan-400">(Kalansüre * 10)</span>}
+            Kalan sürenizin kaç olduğuna bağlı olarak puan kazanırsınız. {<span className="text-questionTextColor">(Kalansüre * 10)</span>}
           </p>
           <p className="mb-4">
             Eğer süreniz biterse puan alamazsınız fakat cevapları tahmin etmeye

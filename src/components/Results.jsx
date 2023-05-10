@@ -12,7 +12,7 @@ function Results({ results, score, setResultTab, resultTab }) {
   useEffect(() => {
     let t = setInterval(() => {
       setPoint(point + 1);
-    }, 10);
+    }, 1);
 
     if (point >= score) {
       setPoint(score);
@@ -24,22 +24,40 @@ function Results({ results, score, setResultTab, resultTab }) {
   }, [point, resultTab]);
 
   const handleTimer = () => {
-    setStyle(closeAnimClas)
+    setStyle(closeAnimClas);
     setTimeout(() => {
-      setResultTab(false)
+      setResultTab(false);
     }, 500);
   };
 
   return (
     <div className={style}>
-      <div className="bg-lightCurrentBgColor rounded-2xl text-gray-300 p-14">
-        <button
-          onClick={() => {
-            handleTimer();
-          }}
-        >
-          X
-        </button>
+      <div className="bg-lightCurrentBgColor rounded-2xl text-gray-300 p-10 w-[25%] h-[55%]">
+        <div className="flex">
+          <div className="flex flex-col">
+            <div className="text-4xl mb-5">Cevaplar</div>
+            {results.map((item) => (
+              <div className="flex border-b">
+                <div className="mt-2 w-24 text-left">{item.answer}</div>
+                <div className="m-2 text-questionTextColor">{item.info}</div>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col items-center justify-center text-6xl w-96 ml-10">
+            <div className="text-4xl">Skor</div>
+            <div className="m-3 text-questionTextColor border-t-2 w-24">
+              {point}
+            </div>
+          </div>
+          <button
+            className="flex items-start text-questionTextColor h-2"
+            onClick={() => {
+              handleTimer();
+            }}
+          >
+            X
+          </button>
+        </div>
       </div>
     </div>
   );

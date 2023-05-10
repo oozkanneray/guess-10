@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 
-function Results({ results, score }) {
+function Results({ results, score, setResultTab, resultTab }) {
+  const openClass =
+    "left-0 top-0 absolute flex justify-center items-center flex-col text-gray-300 absolute h-[100vh] w-[100%] bg-black backdrop-blur-md bg-opacity-10 animate-opening";
+  const closeAnimClas =
+    "left-0 top-0 absolute flex justify-center items-center flex-col text-gray-300 absolute h-[100vh] w-[100%] bg-black backdrop-blur-md bg-opacity-10 animate-closing";
+
   const [point, setPoint] = useState(0);
+  const [style, setStyle] = useState(openClass);
 
   useEffect(() => {
     let t = setInterval(() => {
@@ -12,27 +18,28 @@ function Results({ results, score }) {
       setPoint(score);
       clearInterval(t);
     }
-
     return () => {
       clearInterval(t);
     };
-  }, [point]);
+  }, [point, resultTab]);
+
+  const handleTimer = () => {
+    setStyle(closeAnimClas)
+    setTimeout(() => {
+      setResultTab(false)
+    }, 1);
+  };
 
   return (
-    <div className="flex flex-col border-2 rounded-xl justify-evenly">
-      <div className="flex text-4xl font-bold justify-around">
-        <div className="underline underline-offset-4">Answers</div>
-        <div className="underline underline-offset-4">Score</div>
-      </div>
-      <div className="flex justify-around">
-        <div className="grid grid-rows-5 grid-cols-2 font-bold p-4 w-80 ">
-          {results.map((item) => (
-            <div className="m-2 text-3xl">{item}</div>
-          ))}
-        </div>
-        <div className="flex flex-col text-center text-4xl font-bold items-center justify-center">
-          <div className="w-72">{point}</div>
-        </div>
+    <div className={style}>
+      <div className="bg-lightCurrentBgColor rounded-2xl text-gray-300 p-14">
+        <button
+          onClick={() => {
+            handleTimer();
+          }}
+        >
+          X
+        </button>
       </div>
     </div>
   );

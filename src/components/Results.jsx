@@ -27,7 +27,7 @@ function Results({ results, score, setResultTab, resultTab }) {
     setStyle(closeAnimClas)
     setTimeout(() => {
       setResultTab(false)
-    }, 1);
+    }, 500);
   };
 
   return (

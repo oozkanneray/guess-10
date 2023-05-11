@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 function AnswerBox({ answer, userInput,setScore,timer,score}) {
   let initialClass =
-    "flex text-3xl text-white border-2 border-gray-400 w-52 h-16 text-center m-4 rounded-xl items-center justify-center p-2";
+    "flex text-3xl text-white border-2 border-gray-400 sm:w-52 w-28 h-12 text-center m-4 rounded-xl items-center justify-center p-2";
   let animClass =
     "flex text-3xl text-white border-2 border-gray-400 w-52 h-16 text-center m-4 rounded-xl items-center justify-center animate-already-found";
 

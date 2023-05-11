@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 
-#root{
+body{
     height:100vh;
     background-color: #121213;
 }

@@ -32,7 +32,7 @@ function Results({ results, score, setResultTab, resultTab }) {
 
   return (
     <div className={style}>
-      <div className="bg-lightCurrentBgColor rounded-2xl text-gray-300 p-10 w-[25%] h-[55%]">
+      <div className="bg-lightCurrentBgColor rounded-2xl text-gray-300 p-16">
         <div className="flex">
           <div className="flex flex-col">
             <div className="text-4xl mb-5">Cevaplar</div>
@@ -43,7 +43,7 @@ function Results({ results, score, setResultTab, resultTab }) {
               </div>
             ))}
           </div>
-          <div className="flex flex-col items-center justify-center text-6xl w-96 ml-10">
+          <div className="flex flex-col items-center justify-center text-6xl ml-16">
             <div className="text-4xl">Skor</div>
             <div className="m-3 text-questionTextColor border-t-2 w-24">
               {point}

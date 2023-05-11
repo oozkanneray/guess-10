@@ -1,17 +1,17 @@
 function GuideCard({ open, setOpen }) {
   const openClass =
-    "absolute flex justify-center items-center flex-col text-gray-300 absolute h-[100vh] w-[100%] bg-black backdrop-blur-md bg-opacity-10 animate-opening";
+    "absolute flex justify-center items-center flex-col text-gray-400 absolute h-[100vh] w-[100%] bg-black backdrop-blur-md bg-opacity-10 animate-opening";
   const closeAnimClas =
-    "absolute flex justify-center items-center flex-col text-gray-300 absolute h-[100vh] w-[100%] bg-black backdrop-blur-md bg-opacity-10 animate-closing";
+    "absolute flex justify-center items-center flex-col text-gray-400 absolute h-[100vh] w-[100%] bg-black backdrop-blur-md bg-opacity-10 animate-closing";
 
   return (
-    <div className={open ? openClass : closeAnimClas}>
-      <div className="w-[25%] h-[55%] bg-lightCurrentBgColor rounded-2xl text-gray-300 p-14 flex flex-col justify-center">
+    <div className={open ? openClass : closeAnimClas} >
+      <div className="bg-lightCurrentBgColor rounded-2xl text-gray-300 p-14 flex flex-col justify-center">
         <div className="flex justify-around">
           <h4 className="text-4xl mb-4 text-questionTextColor">Guess10</h4>
           <button
             className="text-xl"
-            onClick={() => {
+            onClick={(e) => {
               setOpen(false);
             }}
           >

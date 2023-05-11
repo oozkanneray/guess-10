@@ -10,7 +10,8 @@ export default {
       },
       keyframes: {
         found: {
-          "100%": { color: "#60f086" },
+          "0%": { color: "#60f086" },
+          "100%" : {color : "white"}
         },
         wrong: {
           "0%": { transform: "translate(10px)", border: "2px solid red" },
@@ -28,7 +29,7 @@ export default {
         },
       },
       animation: {
-        "already-found": "found 0.3s linear forwards",
+        "already-found": "found 0.4s linear",
         "wrong-answer": "wrong 0.2s linear",
         "closing": "closeTab 0.2s linear forwards",
         "opening": "openTab 0.2s linear forwards",

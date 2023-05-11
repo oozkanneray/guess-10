@@ -5,12 +5,12 @@ import Results from "./Results";
 
 function Main({ question, answers }) {
   let initialClass =
-    "border-2 rounded-xl p-3 border-gray-500 m-2 bg-transparent text-white placeholder-gray-400";
+    "border-2 rounded-lg p-3 border-gray-400 sm:w-96 w-52 h-12 m-2 bg-transparent text-white placeholder-gray-400";
   let animClass =
-    "border-2 rounded-xl p-3 border-gray-500 m-2 bg-transparent text-white placeholder-gray-400 animate-wrong-answer animate-jiggle-jiggle";
+    "border-2 rounded-sm p-3 border-gray-400 w-96 h-16 m-2 bg-transparent text-white placeholder-gray-400 animate-wrong-answer animate-jiggle-jiggle";
 
   const [userInput, setUserInput] = useState("");
-  const [timer, setTimer] = useState(10);
+  const [timer, setTimer] = useState(0);
   const [playTimer, setPlayTimer] = useState(true);
   const [inputClass, setInputClass] = useState(initialClass);
   const [score, setScore] = useState(0);
@@ -50,9 +50,10 @@ function Main({ question, answers }) {
 
   return (
     <main className="flex flex-col items-center m-12">
-      <div className="text-questionTextColor font-bold text-4xl mb-8">-{question}-</div>
+      <div className="text-questionTextColor font-bold text-4xl mb-8 text-center">{question}</div>
 
-      <div className="flex flex-wrap w-[30%] justify-center">
+      <div className="flex justify-center items-center">
+        <div className="grid grid-cols-2">
         {answers.map((item) => (
           <AnswerBox
             answer={item.answer}
@@ -62,6 +63,7 @@ function Main({ question, answers }) {
             score={score}
           />
         ))}
+        </div>
       </div>
 
       <form
@@ -81,9 +83,6 @@ function Main({ question, answers }) {
           }}
           ref={inputRef}
         />
-        <button className="border-2 rounded-xl p-3 border-gray-500 m-2 text-white">
-          Ok
-        </button>
       </form>
       <div className="text-gray-300">{timer}</div>
       <div className="text-gray-300 text-center w-[35%]">

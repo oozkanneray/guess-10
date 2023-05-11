@@ -5,9 +5,9 @@ import Results from "./Results";
 
 function Main({ question, answers }) {
   let initialClass =
-    "border-2 rounded-lg p-3 border-gray-400 sm:w-96 w-52 h-12 m-2 bg-transparent text-white placeholder-gray-400";
+    "border-2 rounded-lg p-3 border-gray-400 sm:w-96 w-56 h-12 m-2 bg-transparent text-white placeholder-gray-400";
   let animClass =
-    "border-2 rounded-sm p-3 border-gray-400 w-96 h-16 m-2 bg-transparent text-white placeholder-gray-400 animate-wrong-answer animate-jiggle-jiggle";
+    "border-2 rounded-sm p-3 border-gray-400 sm:w-96 w-56 h-12 m-2 bg-transparent text-white placeholder-gray-400 animate-wrong-answer animate-jiggle-jiggle";
 
   const [userInput, setUserInput] = useState("");
   const [timer, setTimer] = useState(0);

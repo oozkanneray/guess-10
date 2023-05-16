@@ -1,17 +1,29 @@
-import data from "./data.jsx"
 import Navbar from "./components/Navbar.jsx";
 import Main from "./components/Main.jsx";
-
+import supabase from "./supabase.jsx";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [question, setQuestion] = useState();
+  const [answers, setAnswers] = useState([]);
 
+  const fetchData = async () => {
+    const { data, error } = await supabase.from("question1").select("question,answers").eq("id","2");
+    if(data){
+      data.map(item => setQuestion(item.question))
+      data.map(item => setAnswers(item.answers))
+    }
+  };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
-      <>
-      <Navbar/>
-      {data.map(item => <Main answers={item.answers} question={item.question}/>)}
-      </>
+    <>
+      <Navbar />
+        <Main answers={answers} question={question} />
+    </>
   );
 }
 

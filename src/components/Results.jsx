@@ -38,8 +38,7 @@ function Results({ results, score, setResultTab, resultTab }) {
             <div className="text-4xl mb-5">Cevaplar</div>
             {results.map((item) => (
               <div className="flex border-b">
-                <div className="mt-2 w-24 text-left">{item.answer}</div>
-                <div className="m-2 text-questionTextColor">{item.info}</div>
+                <div className="mt-2 w-24 text-left">{item}</div>
               </div>
             ))}
           </div>

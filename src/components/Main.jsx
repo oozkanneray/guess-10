@@ -5,13 +5,13 @@ import Results from "./Results";
 
 function Main({ question, answers }) {
   let initialClass =
-    "border-2 rounded-lg p-3 border-gray-400 sm:w-96 w-56 h-12 m-2 bg-transparent text-white placeholder-gray-400";
+    "flex items-center border-2 rounded-lg border-gray-400 sm:w-96 w-56 h-12 m-2 bg-transparent text-white placeholder-gray-400";
   let animClass =
-    "border-2 rounded-sm p-3 border-gray-400 sm:w-96 w-56 h-12 m-2 bg-transparent text-white placeholder-gray-400 animate-wrong-answer animate-jiggle-jiggle";
+    "flex items-center border-2 rounded-lg border-gray-400 sm:w-96 w-56 h-12 m-2 bg-transparent text-white placeholder-gray-400 animate-wrong-answer animate-jiggle-jiggle";
 
   const [userInput, setUserInput] = useState("");
-  const [timer, setTimer] = useState(0);
-  const [playTimer, setPlayTimer] = useState(true);
+  const [timer, setTimer] = useState(60);
+  const [playTimer, setPlayTimer] = useState(false);
   const [inputClass, setInputClass] = useState(initialClass);
   const [score, setScore] = useState(0);
   const [a, setA] = useState("");
@@ -35,7 +35,7 @@ function Main({ question, answers }) {
     return () => {
       clearInterval(t);
     };
-  }, [timer]);
+  }, [timer,playTimer]);
 
   const checkTimer = () => {
     if (timer <= 0) {
@@ -44,7 +44,7 @@ function Main({ question, answers }) {
   };
 
   const checkWrong = () => {
-    !answers.some((item) => item.answer.toLowerCase() === a.toLowerCase()) &&
+    !answers.some((item) => item.toLowerCase() === a.toLowerCase()) &&
       setInputClass(animClass);
   };
 
@@ -56,7 +56,7 @@ function Main({ question, answers }) {
         <div className="grid grid-cols-2">
         {answers.map((item) => (
           <AnswerBox
-            answer={item.answer}
+            answer={item}
             userInput={userInput}
             setScore={setScore}
             timer={timer}
@@ -70,12 +70,14 @@ function Main({ question, answers }) {
         onSubmit={(e) => {
           e.preventDefault();
           setUserInput(inputRef.current.value);
-          checkWrong();
+          checkWrong(); 
           inputRef.current.value = "";
+          if(!playTimer) setPlayTimer(true)
         }}
       >
+        <div className={inputClass}>
         <input
-          className={inputClass}
+          className="bg-transparent h-[100%] w-[90%] pl-2"
           placeholder="type here!"
           onChange={(e) => {
             setA(e.target.value);
@@ -83,11 +85,13 @@ function Main({ question, answers }) {
           }}
           ref={inputRef}
         />
+        <div className="text-gray-300 w-[10%] text-center text-xl text-white/50">{timer}</div>
+        </div>
       </form>
-      <div className="text-gray-300">{timer}</div>
       <div className="text-gray-300 text-center w-[35%]">
         {checkTimer() && (
           <button
+          className="p-4 text-xl border-2 mt-5 rounded-2xl border-white text-questionTextColor hover:scale-105"
             onClick={() => {
               setResultTab(true);
             }}

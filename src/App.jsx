@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar.jsx";
 import Main from "./components/Main.jsx";
-import supabase from "./supabase.jsx";
+import supabase from "./createsupabase.jsx";
 import { useEffect, useState } from "react";
 
 function App() {

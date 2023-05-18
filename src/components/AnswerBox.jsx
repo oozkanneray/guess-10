@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 
 function AnswerBox({ answer, userInput,setScore,timer,score}) {
   let initialClass =
-    "flex sm:text-3xl text-xl text-white border-2 border-gray-400 sm:w-52 w-28 h-12 text-center m-4 rounded-xl items-center justify-center p-2";
+    "flex sm:text-3xl text-xl text-white border-2 border-gray-400 sm:w-52 w-28 sm:h-12 h-10 text-center m-4 rounded-xl items-center justify-center";
   let animClass =
-    "flex sm:text-3xl text-xl text-white border-2 border-gray-400 sm:w-52 w-28 h-12 text-center m-4 rounded-xl items-center justify-center animate-already-found";
+    "flex sm:text-3xl text-xl text-white border-2 border-gray-400 sm:w-52 w-28 sm:h-12 h-10 text-center m-4 rounded-xl items-center justify-center animate-already-found";
 
   const [find, setFind] = useState(false);
   const [founded, setFounded] = useState(initialClass);

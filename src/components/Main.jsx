@@ -15,7 +15,7 @@ function Main({ question, answers }) {
   const [inputClass, setInputClass] = useState(initialClass);
   const [score, setScore] = useState(0);
   const [a, setA] = useState("");
-  const [resultTab,setResultTab] = useState(false);
+  const [resultTab, setResultTab] = useState(false);
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ function Main({ question, answers }) {
     return () => {
       clearInterval(t);
     };
-  }, [timer,playTimer]);
+  }, [timer, playTimer]);
 
   const checkTimer = () => {
     if (timer <= 0) {
@@ -49,20 +49,22 @@ function Main({ question, answers }) {
   };
 
   return (
-    <main className="flex flex-col items-center m-12">
-      <div className="text-questionTextColor font-bold text-4xl mb-8 text-center">{question}</div>
+    <main className="flex flex-col justify-center items-center m-12">
+      <div className="text-questionTextColor font-bold mb-8 text-center sm:text-4xl text-2xl">
+        {question}
+      </div>
 
       <div className="flex justify-center items-center">
         <div className="grid grid-cols-2">
-        {answers.map((item) => (
-          <AnswerBox
-            answer={item}
-            userInput={userInput}
-            setScore={setScore}
-            timer={timer}
-            score={score}
-          />
-        ))}
+          {answers.map((item) => (
+            <AnswerBox
+              answer={item}
+              userInput={userInput}
+              setScore={setScore}
+              timer={timer}
+              score={score}
+            />
+          ))}
         </div>
       </div>
 
@@ -70,28 +72,30 @@ function Main({ question, answers }) {
         onSubmit={(e) => {
           e.preventDefault();
           setUserInput(inputRef.current.value);
-          checkWrong(); 
+          checkWrong();
           inputRef.current.value = "";
-          if(!playTimer) setPlayTimer(true)
+          if (!playTimer) setPlayTimer(true);
         }}
       >
         <div className={inputClass}>
-        <input
-          className="bg-transparent h-[100%] w-[90%] pl-2"
-          placeholder="type here!"
-          onChange={(e) => {
-            setA(e.target.value);
-            setInputClass(initialClass);
-          }}
-          ref={inputRef}
-        />
-        <div className="text-gray-300 w-[10%] text-center text-xl text-white/50">{timer}</div>
+          <input
+            className="bg-transparent h-[100%] w-[90%] pl-2"
+            placeholder="type here!"
+            onChange={(e) => {
+              setA(e.target.value);
+              setInputClass(initialClass);
+            }}
+            ref={inputRef}
+          />
+          <div className="text-gray-300 w-[10%] text-center text-xl text-white/50 m-2">
+            {timer}
+          </div>
         </div>
       </form>
       <div className="text-gray-300 text-center w-[35%]">
         {checkTimer() && (
           <button
-          className="p-4 text-xl border-2 mt-5 rounded-2xl border-white text-questionTextColor hover:scale-105"
+            className="p-4 text-xl border-2 mt-5 rounded-2xl border-white text-questionTextColor hover:scale-105"
             onClick={() => {
               setResultTab(true);
             }}
@@ -99,7 +103,14 @@ function Main({ question, answers }) {
             Show Results
           </button>
         )}
-        {resultTab && <Results results={answers} score={score} setResultTab={setResultTab} resultTab={resultTab} />}
+        {resultTab && (
+          <Results
+            results={answers}
+            score={score}
+            setResultTab={setResultTab}
+            resultTab={resultTab}
+          />
+        )}
       </div>
     </main>
   );

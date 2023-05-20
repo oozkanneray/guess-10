@@ -10,7 +10,7 @@ function Main({ question, answers }) {
     "flex items-center border-2 rounded-lg border-gray-400 sm:w-96 w-56 h-12 m-2 bg-transparent text-white placeholder-gray-400 animate-wrong-answer animate-jiggle-jiggle";
 
   const [userInput, setUserInput] = useState("");
-  const [timer, setTimer] = useState(60);
+  const [timer, setTimer] = useState(5);
   const [playTimer, setPlayTimer] = useState(false);
   const [inputClass, setInputClass] = useState(initialClass);
   const [score, setScore] = useState(0);
@@ -30,12 +30,14 @@ function Main({ question, answers }) {
     if (checkTimer()) {
       setPlayTimer(false);
       setTimer(0);
+      setResultTab(true)
     }
 
     return () => {
       clearInterval(t);
     };
   }, [timer, playTimer]);
+
 
   const checkTimer = () => {
     if (timer <= 0) {
@@ -44,12 +46,12 @@ function Main({ question, answers }) {
   };
 
   const checkWrong = () => {
-    !answers.some((item) => item.toLowerCase() === a.toLowerCase()) &&
+    !answers.some((item) => item.toLowerCase() === a.toLowerCase().trim()) &&
       setInputClass(animClass);
   };
 
   return (
-    <main className="flex flex-col justify-center items-center m-12">
+    <main className="flex flex-col justify-center items-center m-12 w-100 h-100">
       <div className="text-questionTextColor font-bold mb-8 text-center sm:text-4xl text-2xl">
         {question}
       </div>
@@ -71,7 +73,7 @@ function Main({ question, answers }) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          setUserInput(inputRef.current.value);
+          setUserInput(inputRef.current.value.trim());
           checkWrong();
           inputRef.current.value = "";
           if (!playTimer) setPlayTimer(true);
@@ -95,7 +97,7 @@ function Main({ question, answers }) {
       <div className="text-gray-300 text-center w-[35%]">
         {checkTimer() && (
           <button
-            className="p-4 text-xl border-2 mt-5 rounded-2xl border-white text-questionTextColor hover:scale-105"
+            className="sm:p-4 p-2 sm:text-xl text-lg border-2 mt-5 rounded-2xl border-white text-questionTextColor hover:scale-105"
             onClick={() => {
               setResultTab(true);
             }}

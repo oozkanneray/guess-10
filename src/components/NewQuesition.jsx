@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function NewQuestion() {
+function NewQuestion({addnew,setAddnew}) {
   const openClass =
     "left-0 top-0 absolute flex justify-center items-center flex-col text-gray-300 absolute h-[100vh] w-[100%] bg-black backdrop-blur-md bg-opacity-10 animate-opening";
   const closeAnimClas =
@@ -10,12 +10,17 @@ function NewQuestion() {
 
   return (
     <div className={openClass}>
-      <form
+        <div>
+          <button onClick={() => {
+            setAddnew(false)
+          }}>X</button>
+        <form
         action=""
         onSubmit={(e) => {
           e.preventDefault();
         }}
       ></form>
+        </div>
     </div>
   );
 }

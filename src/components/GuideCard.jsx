@@ -6,9 +6,9 @@ function GuideCard({ open, setOpen }) {
 
   return (
     <div className={open ? openClass : closeAnimClas}>
-      <div className="bg-lightCurrentBgColor rounded-2xl text-gray-300 p-14 flex flex-col justify-center">
+      <div className="bg-lightCurrentBgColor rounded-2xl text-gray-300 sm:p-14 p-5 m-5 flex flex-col justify-center">
         <div className="flex justify-around">
-          <h4 className="text-4xl mb-4 text-questionTextColor">Guess10</h4>
+          <h4 className="sm:text-4xl text-2xl mb-4 text-questionTextColor">Guess10</h4>
           <button
             className="text-xl"
             onClick={(e) => {
@@ -18,7 +18,7 @@ function GuideCard({ open, setOpen }) {
             X
           </button>
         </div>
-        <div className="flex flex-col text-lg py-5">
+        <div className="flex flex-col sm:text-lg text-sm py-5">
           <p className="mb-4">
             Size verilen soruyu{" "}
             {<span className="text-questionTextColor">60 saniye</span>}{" "}

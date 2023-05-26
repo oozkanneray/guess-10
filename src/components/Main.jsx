@@ -30,14 +30,13 @@ function Main({ question, answers }) {
     if (checkTimer()) {
       setPlayTimer(false);
       setTimer(0);
-      setResultTab(true)
+      setResultTab(true);
     }
 
     return () => {
       clearInterval(t);
     };
   }, [timer, playTimer]);
-
 
   const checkTimer = () => {
     if (timer <= 0) {
@@ -51,8 +50,8 @@ function Main({ question, answers }) {
   };
 
   return (
-    <main className="flex flex-col justify-center items-center m-12 w-100 h-100">
-      <div className="text-questionTextColor font-bold mb-8 text-center sm:text-4xl text-2xl">
+    <main className="flex flex-col justify-center items-center m-12">
+      <div className="text-questionTextColor font-bold mb-8 text-center sm:text-4xl text-2xl ">
         {question}
       </div>
 

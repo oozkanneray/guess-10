@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import GuideCard from "./GuideCard";
 import threedotpng from "../assets/threedot.png";
+import AllQuestion from "./Allquestion";
 
-function Navbar() {
+function Navbar({changeCurrent}) {
   const [open, setOpen] = useState(false);
   const [guide, setGuide] = useState(false);
+  const [allQuestion, setAllQuestion] = useState(false);
 
   let menuRef = useRef(null);
 
@@ -25,11 +27,15 @@ function Navbar() {
   return (
     <div>
       {guide && <GuideCard open={guide} setOpen={setGuide} />}
+
+      <AllQuestion allQuestion={allQuestion} setAllQuestion={setAllQuestion} changeCurrent={changeCurrent} />
       <nav className="text-gray-300 bg-black h-14 flex items-center justify-center">
-        <h1 class="font-extrabold text-3xl text-white">Guess10</h1>
+        <h1 className="font-extrabold text-3xl text-white">Guess10</h1>
         <button
           onClick={() => {
             setOpen(true);
+            setGuide(false);
+            setAllQuestion(false)
           }}
         >
           <img
@@ -55,7 +61,14 @@ function Navbar() {
             >
               Nasıl Oynanır?
             </li>
-            <li>Geçmiş Oyunlar</li>
+            <li
+              onClick={() => {
+                setAllQuestion(true);
+                setOpen(false);
+              }}
+            >
+              Geçmiş Oyunlar
+            </li>
             <li>Yeni Soru Oluştur</li>
             <li>Giriş Yap</li>
           </ul>

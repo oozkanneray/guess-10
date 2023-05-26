@@ -2,12 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 body{
-    height:100vh;
+    height:100%;
     background-color: #121213;
 }
 
 textarea:focus, input:focus{
     outline: none;
+}
+
+@layer base {
+    html {
+        font-family: 'Nunito', sans-serif;
+    }
+
+    li{
+        margin-top:10px;
+        margin-bottom:10px;
+        height: 35px;
+        border-radius:5px;
+        width:90%;
+        text-align:center;
+        display: flex;
+        justify-content:center;
+        align-items: center;
+    }
+
+    li:hover{
+        background-color: #141416;
+    }
 }

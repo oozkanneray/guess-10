@@ -1,33 +1,64 @@
-import { useState } from "react";
-import githubPng from "../assets/githubPng.png";
+import { useEffect, useRef, useState } from "react";
 import GuideCard from "./GuideCard";
-import NewQuestion from "./NewQuesition";
+import threedotpng from "../assets/threedot.png";
 
 function Navbar() {
-  const [open, setOpen] = useState(true);
-  const [addnew, setAddnew] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [guide, setGuide] = useState(false);
+
+  let menuRef = useRef(null);
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  }, []);
 
   return (
     <div>
-      {open && <GuideCard open={open} setOpen={setOpen} />}
-      {addnew && <NewQuestion addnew={addnew} setAddnew={setAddnew}/>}
+      {guide && <GuideCard open={guide} setOpen={setGuide} />}
       <nav className="text-gray-300 bg-black h-14 flex items-center justify-center">
+        <h1 class="font-extrabold text-3xl text-white">Guess10</h1>
         <button
-          className="text-xl bg-stone-900 rounded-xl w-8 h-8 mx-3 "
           onClick={() => {
             setOpen(true);
           }}
         >
-          ?
+          <img
+            src={threedotpng}
+            className="w-7 h-7 ml-2 text-gray-300"
+            alt=""
+          />
         </button>
-        <button onClick={() =>{setAddnew(true)}} className="flex items-center justify-center font-bold text-2xl bg-stone-900 rounded-xl w-8 h-8 mx-3">
-          +
-        </button>
-        <h4 className="text-3xl text-questionTextColor mx-5">Guess10</h4>
-        <div className="text-xl bg-stone-900 rounded-xl w-8 h-8 flex items-center justify-center text-center mx-3">
-          <a href="https://github.com/oozkanneray/guess-10">
-            <img className="text-xlrounded-xl w-6 h-6" src={githubPng}></img>
-          </a>
+        <div
+          ref={menuRef}
+          className={
+            open
+              ? "w-40 absolute bg-lightCurrentBgColor top-14 rounded-xl ml-72"
+              : "hidden"
+          }
+        >
+          <ul className="text-center  flex flex-col justify-center items-center">
+            <li
+              onClick={() => {
+                setGuide(true);
+                setOpen(false);
+              }}
+            >
+              Nasıl Oynanır?
+            </li>
+            <li>Geçmiş Oyunlar</li>
+            <li>Yeni Soru Oluştur</li>
+            <li>Giriş Yap</li>
+          </ul>
         </div>
       </nav>
     </div>

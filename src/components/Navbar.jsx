@@ -2,13 +2,25 @@ import { useEffect, useRef, useState } from "react";
 import GuideCard from "./GuideCard";
 import threedotpng from "../assets/threedot.png";
 import AllQuestion from "./Allquestion";
+import NewQuestion from "./NewQuesition";
+import supabase from "../createsupabase";
 
-function Navbar({changeCurrent}) {
+function Navbar({ changeCurrent }) {
   const [open, setOpen] = useState(false);
   const [guide, setGuide] = useState(false);
   const [allQuestion, setAllQuestion] = useState(false);
-
+  const [addNew, setAddNew] = useState(false);
+  const [user,setUser] = useState()
+ 
   let menuRef = useRef(null);
+
+  const userData = async () => {
+    const { data, error } = await supabase.auth.getUser();
+    if (data) {
+      setUser(data.user.user_metadata);
+    }
+  };
+
 
   useEffect(() => {
     let handler = (e) => {
@@ -16,6 +28,8 @@ function Navbar({changeCurrent}) {
         setOpen(false);
       }
     };
+
+    userData()
 
     document.addEventListener("mousedown", handler);
 
@@ -28,14 +42,19 @@ function Navbar({changeCurrent}) {
     <div>
       {guide && <GuideCard open={guide} setOpen={setGuide} />}
 
-      <AllQuestion allQuestion={allQuestion} setAllQuestion={setAllQuestion} changeCurrent={changeCurrent} />
+      <AllQuestion
+        allQuestion={allQuestion}
+        setAllQuestion={setAllQuestion}
+        changeCurrent={changeCurrent}
+      />
+      {addNew && <NewQuestion user={user} setAddNew={setAddNew} addNew={addNew} />}
       <nav className="text-gray-300 bg-black h-14 flex items-center justify-center">
         <h1 className="font-extrabold text-3xl text-white">Guess10</h1>
         <button
           onClick={() => {
             setOpen(true);
             setGuide(false);
-            setAllQuestion(false)
+            setAllQuestion(false);
           }}
         >
           <img
@@ -69,8 +88,14 @@ function Navbar({changeCurrent}) {
             >
               Geçmiş Oyunlar
             </li>
-            <li>Yeni Soru Oluştur</li>
-            <li>Giriş Yap</li>
+            <li
+              onClick={() => {
+                setAddNew(true);
+                setOpen(false);
+              }}
+            >
+              Yeni Soru Oluştur
+            </li>
           </ul>
         </div>
       </nav>

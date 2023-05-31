@@ -60,13 +60,13 @@ function NewQuestion({ user, setAddNew }) {
               setIsSend(false)
             }}
           >
-            <div className="flex items-center border-2 rounded-lg border-gray-400 sm:w-96 w-56 h-12 m-2 bg-transparent text-white placeholder-gray-400">
+            <div className="flex items-center border-2 rounded-lg border-gray-400 sm:w-96 w-100 h-12 m-2 bg-transparent text-white placeholder-gray-400">
               <input
                 ref={quesitonInput}
                 placeholder="yeni soru..."
-                className="bg-transparent w-[85%] p-2"
+                className="bg-transparent sm:w-[85%] w-[100%] p-2"
               />
-              <button className="w-[15%] m-2">Gönder</button>
+              <button className="w-[15%] mr-5 sm:m-2">Gönder</button>
             </div>
           </form>
         ) : null}

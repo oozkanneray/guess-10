@@ -7,8 +7,8 @@ function GuideCard({ open, setOpen }) {
   return (
     <div className={open ? openClass : closeAnimClas}>
       <div className="bg-lightCurrentBgColor rounded-2xl text-gray-300 sm:p-14 p-5 m-5 flex flex-col justify-center">
-        <div className="flex justify-around">
-          <h4 className="sm:text-4xl text-2xl mb-4 text-questionTextColor">Guess10</h4>
+        <div className="flex justify-around mb-2">
+          <h4 className="sm:text-4xl text-2xl text-questionTextColor">Guess10</h4>
           <button
             className="text-xl"
             onClick={(e) => {

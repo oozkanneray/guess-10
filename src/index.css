@@ -2,35 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
-body{
-    height:100%;
-    background-color: #121213;
+body {
+  height: 100%;
+  background-color: #121213;
 }
 
-textarea:focus, input:focus{
-    outline: none;
+textarea:focus,
+input:focus {
+  outline: none;
 }
 
 @layer base {
-    html {
-        font-family: 'Nunito', sans-serif;
-    }
+  html {
+    font-family: "Nunito", sans-serif;
+  }
 
-    li{
-        margin-top:10px;
-        margin-bottom:10px;
-        height: 35px;
-        border-radius:5px;
-        width:90%;
-        text-align:center;
-        display: flex;
-        justify-content:center;
-        align-items: center;
-    }
+  li {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 35px;
+    border-radius: 5px;
+    width: 90%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    li:hover{
-        background-color: #141416;
-    }
+  li:hover {
+    background-color: #141416;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #979797;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 }

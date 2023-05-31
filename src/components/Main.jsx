@@ -31,6 +31,7 @@ function Main({ question, answers }) {
       setPlayTimer(false);
       setTimer(0);
       setResultTab(true);
+      localStorage.setItem("solved",JSON.stringify(resultTab))
     }
 
     return () => {

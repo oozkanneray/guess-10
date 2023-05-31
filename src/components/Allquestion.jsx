@@ -22,7 +22,7 @@ function AllQuestion({ allQuestion, setAllQuestion,changeCurrent }) {
   if (allQuestion) {
     return (
       <div className="text-gray-300 absolute w-[100%] h-[90%] flex justify-center top-14">
-        <div className="mt-20 sm:w-[30%] w-[65%] h-[70%] border-white border-2 bg-currentBgColor">
+        <div className="mt-20 sm:w-[25%] w-[65%] h-[70%] border-white border-2 bg-currentBgColor overflow-auto">
           <div className="flex justify-around mt-8 items-center">
             <div className="text-questionTextColor text-2xl">Bütün Sorular</div>
             <button
